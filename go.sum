@@ -1,8 +1,6 @@
-github.com/semichkin-gopkg/configurator v0.0.2 h1:NxgkQ3Hl6fL8JCXZ83ea8nBuFR8VKSlhPBVauJDtJv0=
-github.com/semichkin-gopkg/configurator v0.0.2/go.mod h1:DQbEy5n8j/BOEIN6pq/Gn3Bor39Wct6BfcEgsRuvi2A=
-github.com/semichkin-gopkg/promise v0.0.1 h1:IhyXhxvQ1V3YzIfYY0X4ugm4oU+MN0r7uSw6spW0HE0=
-github.com/semichkin-gopkg/promise v0.0.1/go.mod h1:ualFX5X4v4aqgOWe7fAJ1TItBQ8E/HPTFySZfL23nkM=
-github.com/semichkin-gopkg/promise v0.0.2 h1:DW1sNF3wB2MaQdR1bdRsNePlDDV3BhBB8NqhN2SppQ4=
-github.com/semichkin-gopkg/promise v0.0.2/go.mod h1:DPEpsVr60ULhVaeJtSfwEdTsWOPRiAJPz/6Iv21PQIU=
+github.com/semichkin-gopkg/conf v0.0.3 h1:Krrhc8B/GXhniLjYoazrz7KwR5/zLxhYqu+SfkezRF8=
+github.com/semichkin-gopkg/conf v0.0.3/go.mod h1:hcOYG4uFFkyVdK429d+vJjN8Hd8AWYWKBKTAcYL1H3E=
+github.com/semichkin-gopkg/promise v0.0.3 h1:L/j24FR9t4D6poXF6Zhz4a6iYFtxvFNungv/34K5Bew=
+github.com/semichkin-gopkg/promise v0.0.3/go.mod h1:fJ7RIhA3kutBCf6oxC+sndlmsmRnbY225+g+7J7A8wQ=
 golang.org/x/exp v0.0.0-20221204150635-6dcec336b2bb h1:QIsP/NmClBICkqnJ4rSIhnrGiGR7Yv9ZORGGnmmLTPk=
 golang.org/x/exp v0.0.0-20221204150635-6dcec336b2bb/go.mod h1:CxIveKay+FTh1D0yPZemJVgC/95VzuuOLq5Qi4xnoYc=

@@ -3,7 +3,7 @@ package workerpool
 import (
 	"context"
 	"errors"
-	"github.com/semichkin-gopkg/configurator"
+	"github.com/semichkin-gopkg/conf"
 	"github.com/semichkin-gopkg/promise"
 	"sync"
 )
@@ -34,15 +34,15 @@ type Pool[T, R any] struct {
 
 func NewPool[T, R any](
 	workflow func(context.Context, *Job[T, R]),
-	updaters ...configurator.Updater[Configuration],
+	updaters ...conf.Updater[Configuration],
 ) *Pool[T, R] {
-	configuration := configurator.New[Configuration]().
+	configuration := conf.NewBuilder[Configuration]().
 		Append(
 			WithWorkersCount(1),
 			WithJobsChannelCapacity(256),
 		).
 		Append(updaters...).
-		Apply()
+		Build()
 
 	poolStoppedCtx, notifyPoolStopped := context.WithCancel(context.Background())
 	workersFinishedCtx, notifyWorkersFinished := context.WithCancel(context.Background())

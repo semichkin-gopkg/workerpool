@@ -1,7 +1,7 @@
 package workerpool
 
 import (
-	"github.com/semichkin-gopkg/configurator"
+	"github.com/semichkin-gopkg/conf"
 	"golang.org/x/exp/constraints"
 )
 
@@ -10,13 +10,13 @@ type Configuration struct {
 	JobsChannelCapacity uint
 }
 
-func WithWorkersCount(count uint) configurator.Updater[Configuration] {
+func WithWorkersCount(count uint) conf.Updater[Configuration] {
 	return func(c *Configuration) {
 		c.WorkersCount = max(count, 1)
 	}
 }
 
-func WithJobsChannelCapacity(capacity uint) configurator.Updater[Configuration] {
+func WithJobsChannelCapacity(capacity uint) conf.Updater[Configuration] {
 	return func(c *Configuration) {
 		c.JobsChannelCapacity = max(capacity, 1)
 	}
