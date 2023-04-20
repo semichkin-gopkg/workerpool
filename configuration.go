@@ -5,19 +5,19 @@ import (
 	"golang.org/x/exp/constraints"
 )
 
-type Configuration struct {
+type Conf struct {
 	WorkersCount        uint
 	JobsChannelCapacity uint
 }
 
-func WithWorkersCount(count uint) conf.Updater[Configuration] {
-	return func(c *Configuration) {
+func WithWorkersCount(count uint) conf.Updater[Conf] {
+	return func(c *Conf) {
 		c.WorkersCount = max(count, 1)
 	}
 }
 
-func WithJobsChannelCapacity(capacity uint) conf.Updater[Configuration] {
-	return func(c *Configuration) {
+func WithJobsChannelCapacity(capacity uint) conf.Updater[Conf] {
+	return func(c *Conf) {
 		c.JobsChannelCapacity = max(capacity, 1)
 	}
 }

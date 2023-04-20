@@ -18,7 +18,7 @@ type Job[T, R any] struct {
 }
 
 type Pool[T, R any] struct {
-	configuration Configuration
+	config Conf
 
 	workflow func(context.Context, *Job[T, R])
 	jobs     chan *Job[T, R]
@@ -34,9 +34,9 @@ type Pool[T, R any] struct {
 
 func NewPool[T, R any](
 	workflow func(context.Context, *Job[T, R]),
-	updaters ...conf.Updater[Configuration],
+	updaters ...conf.Updater[Conf],
 ) *Pool[T, R] {
-	configuration := conf.NewBuilder[Configuration]().
+	config := conf.New[Conf]().
 		Append(
 			WithWorkersCount(1),
 			WithJobsChannelCapacity(256),
@@ -48,9 +48,9 @@ func NewPool[T, R any](
 	workersFinishedCtx, notifyWorkersFinished := context.WithCancel(context.Background())
 
 	return &Pool[T, R]{
-		configuration:         configuration,
+		config:                config,
 		workflow:              workflow,
-		jobs:                  make(chan *Job[T, R], configuration.JobsChannelCapacity),
+		jobs:                  make(chan *Job[T, R], config.JobsChannelCapacity),
 		poolStoppedCtx:        poolStoppedCtx,
 		notifyPoolStopped:     notifyPoolStopped,
 		workersFinishedCtx:    workersFinishedCtx,
@@ -60,7 +60,7 @@ func NewPool[T, R any](
 
 func (w *Pool[T, R]) Run() {
 	var wg sync.WaitGroup
-	workersLimitCh := make(chan struct{}, w.configuration.WorkersCount)
+	workersLimitCh := make(chan struct{}, w.config.WorkersCount)
 
 F:
 	for {
